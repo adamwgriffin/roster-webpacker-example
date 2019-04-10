@@ -16,5 +16,5 @@ For Webpack Dev Server with hot reloading
 
 * Importing babel polyfill is necessary in order for es6/es7 to work correctly in the project it's included by default with webpacker. In order to get it working you need to import it within each entry point (pack) like so:
 ```
-import "@babel/polyfill" instead
+import "@babel/polyfill"
 ```

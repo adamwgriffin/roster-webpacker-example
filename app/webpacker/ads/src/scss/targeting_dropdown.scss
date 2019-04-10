@@ -1,0 +1,44 @@
+.location-selection {
+  margin-bottom: 0px;
+
+  @media (min-width: 601px) {
+    button {
+      margin-left: 10px;
+    }
+  }
+
+  button {
+    margin-top: 10px;
+  }
+}
+
+.location-selected {
+  li {
+    background-color: #E8E8E8;
+    padding: 5px;
+    border-radius: 2px;
+    width: 100%;
+    margin-bottom: 10px;
+    height: 32px;
+  }
+
+  .selected {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 6px;
+  }
+
+  i {
+    cursor: pointer;
+    font-size: 20px;
+    color: #FFF;
+    opacity: 0.54;
+    background-color: #000;
+    border-radius: 50%;
+  }
+}
+
+.search-loader {
+  margin-left: 10px;
+  display: none;
+}

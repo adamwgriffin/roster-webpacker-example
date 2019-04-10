@@ -1,0 +1,144 @@
+<section>
+  <div class="row">
+    <div class="col s12 m6">
+
+      <!-- ENG-100392 - hiding Amazon because they have suspended our account & are taking a really long time to
+      re-instate it. -->
+      <!--
+      <div id="payment-selection">
+        <div id="payment-topbar">
+          <div class="row">
+            <div class="col s12 m12">
+              <h6>CHOOSE PAYMENT METHOD</h6>
+            </div>
+          </div>
+          <div class="row">
+            <div id="braintree-section" class="col s12 m6">
+              <button class="button payment-btn" id="braintree-button" @click="braintreeToggle">
+                <span>CREDIT / DEBIT</span>
+              </button>
+              <div class="payment-bottom-bar" :class="{ selected: payment_provider === 'braintree' }"></div>
+            </div>
+            <div id="amazon-section" class="col s12 m6">
+              <div id="AmazonPayButton" class="payment-btn" @click="amazonToggle"></div>
+              <div class="payment-bottom-bar" :class="{ selected: payment_provider === 'amazon' }"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      -->
+
+      <form id="payment-selection-main" @submit.prevent>
+        <div id="payment-selection-content" :class="payment_provider"></div>
+
+        <terms-of-service></terms-of-service>
+
+        <button
+          id="payment-submit-btn"
+          type="submit"
+          class="btn btn-no-shadow waves-effect waves-light green"
+          :disabled="orderInvalid"
+          @click="checkPayment"
+        >
+          CONFIRM PURCHASE
+        </button>
+      </form>
+    </div>
+    <div class="col s12 m6">
+      <div id="order-details">
+        <div id="order-preview">
+          <facebook-news-feed-preview></facebook-news-feed-preview>
+          <div id="order-summary">
+            <p id="order-summary-header">Order Summary</p>
+            <div class="line-item">
+              <div class="line-item-name-price">
+                <div class="line-item-name"><span v-if="isListingAd">Listing </span>Advertisement</div>
+                <div class="line-item-price" v-if="!invokePromo">${{adData.budget}}</div>
+                <div class="line-item-price" v-if="invokePromo"><s>${{calculatedBaseBudget}} USD</s></div>
+              </div>
+
+              <div v-if="isListingAd" class="line-item-listing-address">
+                {{ fullAddress }}
+              </div>
+
+              <div class="line-item-name-price" v-if="invokePromo">
+                <div class="line-item-name promo-line-item">SALE PRICE ({{promoData.discount_percentage}}% OFF)</div>
+                <div class="line-item-price">${{adData.budget}} USD</div>
+              </div>
+
+              <div class="sub-line-items">
+                <p class="sub-line-item">Duration: {{adData.selectedDuration.label}}</p>
+                <p class="sub-line-item">
+                  Expected Range: {{adData.expectedRangeMin}} - {{adData.expectedRangeMax}} people
+                </p>
+              </div>
+            </div>
+            <div class="line-item tax">
+              <span class="line-item-name">Estimated sales tax</span>
+              <span class="line-item-price">${{salesTax}} USD</span>
+            </div>
+            <div class="line-item total">
+              <span class="line-item-name">Order Total</span>
+              <span class="line-item-price">${{adData.budget}} USD</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <product-details :is-listing-ad="isListingAd"></product-details>
+
+    </div>
+  </div>
+  <div id="purchase-confirmation-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a
+          :href="myAdsUrl"
+          class="material-icons modal-action modal-close"
+        >clear</a>
+      </div>
+      <h5>Thank you for your purchase</h5>
+      <p>
+        You are now a digital marketing superstar!
+        <span v-if="isListingAd"> Your client will surely thank you as well.</span>
+      </p>
+      <p v-if="isListingAd">Pssst..don't forget to send them periodic reporting updates.</p>
+      <img id="promo-confirm-img" :src="promoData.confirmImageUrl" v-if="promoData.confirmImageUrl">
+    </div>
+    <div class="modal-footer">
+      <a
+        :href="reportsUrl"
+        class="modal-action modal-close btn-no-shadow text-darken-4"
+      >
+        GO TO REPORTING
+      </a>
+      <a
+        :href="myAdsUrl" 
+        class="modal-action modal-close btn-no-shadow grey-text" 
+      >
+        CLOSE
+      </a>
+    </div>
+  </div>
+  <div id="purchase-error-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <a
+          class="material-icons moxi-ads-close-btn modal-action"
+          :class="closeAdsAppClass"
+          href="#"
+          @click="closeModal"
+        >clear</a>
+      </div>
+      <h5>{{ errorModalHeader }}</h5>
+      <p>{{ errorModalBody }}</p>
+    </div>
+    <div class="modal-footer">
+      <a
+        class="btn-no-shadow text-darken-4 modal-action modal-close"
+        :class="closeAdsAppClass"
+        @click="closeModal"
+      >OK</a>
+    </div>
+  </div>
+</section>

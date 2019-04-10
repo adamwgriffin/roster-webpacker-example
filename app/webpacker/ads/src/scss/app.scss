@@ -1,0 +1,352 @@
+@import "nouislider";
+@import "colors";
+
+html {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+}
+
+.ayl-heading {
+  margin: 0;
+  font-weight: bold;
+}
+
+.moxi-ads-close-btn {
+  color: #CCC;
+  font-size: 24px;
+  margin: 16px;
+}
+
+
+[type="checkbox"].filled-in:checked+label:after {
+  border-color: $moxi-blue;
+  background-color: $moxi-blue;
+}
+
+[type="radio"].with-gap:checked + label {
+  &::before {
+    border-color: $moxi-blue;
+  }
+
+  &:after {
+    background-color: $moxi-blue;
+  }
+}
+
+.invalid-input { color: #f44336 !important; }
+
+#content {
+  display: flex;
+  min-height: 100vh;
+  background: white;
+}
+
+#step-content {
+  background: #FFF;
+  width: 100%;
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-top: 72px;
+  min-height: 100vh;
+
+  .row .col {
+    padding: 0;
+  }
+}
+
+.ad-selection-container {
+  background: white;
+  padding: 48px 60px 24px 60px;
+}
+
+.more-info-heading {
+  margin-top: 0;
+  font-size: 48px;
+}
+
+.more-info-text {
+  font-size: 18px;
+}
+
+.more-info-tooltip-wrapper {
+  display: flex;
+}
+
+.material-icons.more-info-tooltip {
+  font-size: 20px;
+  margin-left: 3px;
+}
+
+.action {
+  color: #4088c8;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+#ad-budget-input {
+  .dropdown-menu {
+    text-align: right;
+
+    li a {
+      display: flex;
+    }
+
+    li a:before {
+      content: '$';
+    }
+  }
+}
+
+.editable-dropdown.budget-input {
+  font-size: 24px;
+  color: #4c81c9;
+  width: 130px;
+  display: inline-block;
+
+  @media(max-width: 600px) {
+    font-size: 16px;
+    width: 100px;
+  }
+
+  &.budget-input-promo {
+    width: 285px;
+
+    .promo-price {
+      color: #E01010;
+    }
+  }
+
+  .non-editable-dropdown-field {
+    height: 30px;
+  }
+
+  .dropdown-menu {
+    text-align: right;
+  }
+}
+
+#payment-content {
+  background: white;
+  width: 100%;
+
+  .row .col {
+    padding: 0;
+  }
+  .row {
+    margin-bottom: 0;
+  }
+}
+
+.loader {
+  z-index: 1000;
+  position: absolute;
+  right: 50%;
+  bottom: 50%;
+  transform: translate(50%,50%);
+}
+
+// because .btn-flat has a lot of custom properties in Roster that we don't want to inherit in moxi_ads
+.btn-no-shadow {
+  box-shadow: none;
+  height: 36px;
+  line-height: 36px;
+}
+
+.btn-back {
+  background-color: white;
+  color: #212e35;
+  border: 1px solid #ccc;
+
+  &:hover { border-color: #adadad; }
+}
+
+// Phones only
+@media all and (max-width: 480px) {
+  #content {
+    flex-direction: column;
+  }
+
+  .modal .modal-content { padding: 12px; }
+
+  #side-nav {
+    display: none;
+  }
+
+  #listing-preview-lrg {
+    display: none;
+  }
+
+  #step-content, .ad-selection-container {
+    padding: 2rem;
+  }
+
+  .full-width-mobile-btn {
+    width: 100%;
+  }
+}
+
+
+@keyframes con-pan-slide-in {
+  0% {
+    opacity: 0;
+    visibility: hidden;
+  }
+  100% {
+    // width: 100%;
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0%);
+  }
+}
+@keyframes con-pan-slide-out {
+  0% {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0%);
+    width: 100%;
+  }
+
+  100% {
+    visibility: hidden;
+    opacity: 0;
+    transform: translateX(100%);
+    width: 0;
+  }
+}
+
+@import "../scss/mixins";
+
+$ad-item-size: 85px;
+$ad-item-margin: 5px;
+
+// stuff that is unique to this element put here, the rest is shared with #preview-bar
+#ad-image-items-con-pan {
+  // TODO: setting display:none then display:flex on all this content inside the panel sucks!
+  // I'm doing it because otherwise these elements cause issues when the preview is visibility: hidden
+  // can't use display: none because it doesn't work with css animations.
+  // should figure out a better was to do this
+  .mobile-preview-header {
+    display: none; // otherwise it creates empty space at the right edge of the window
+  }
+
+  #ad-image-items {
+    padding: 20px 0;
+    display: none; // otherwise it creates empty space at the right edge of the window
+  }
+
+  #ad-image-upload-footer {
+    display: none;
+  }
+
+  &.mobile-active {
+    .mobile-preview-header {
+      display: flex;
+    }
+
+    #ad-image-items {
+      // create media queries to support grid masonry by adjusting #ad-image-items width at different breakpoints
+      display: flex;
+      @include grid-media-queries($ad-item-size, $ad-item-margin, 3, 10);
+    }
+
+    #ad-image-upload-footer {
+      display: inherit;
+    }
+  }
+
+  &.mobile-inactive {
+    animation: con-pan-slide-out 3s forwards
+  }
+}
+
+// Phones & Tablets
+@media (max-width: 840px) {
+  #preview-bar, #ad-image-items-con-pan {
+    opacity: 0;
+    visibility: hidden;
+    position: fixed;
+    top: 0;
+    right: 0; // allows it to slide from the right
+    transform: translateX(100%);
+    width: 0;
+    height: 100%;
+    z-index: 1000;
+    overflow-x: hidden; // stops it from getting way to wide on mobile
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch;
+    background: white;
+
+    &.mobile-active {
+      width: 100%;
+      animation: con-pan-slide-in 0.5s forwards;
+    }
+
+    &.mobile-inactive {
+      animation: con-pan-slide-out 0.65s forwards
+    }
+  }
+}
+
+// 7" tablets to desktop
+@media (min-width: 601px) {
+  #preview-bar, #ad-image-items-con-pan {
+    top: 60px;
+    &.headroom-unpinned {
+      top: 0;
+    }
+  }
+}
+
+// Large phones and tablets
+@media all and (min-width: 481px) and (max-width: 840px)  {
+  #side-nav {
+    flex: 0 0 60px;
+  }
+
+  #side-nav ol {
+    padding-top: 72px;
+    padding-left: 14px;
+  }
+
+  #listing-preview-lrg {
+    display: none;
+  }
+}
+
+// Tablets
+@media all and (min-width: 841px) and (max-width: 1199px) {
+  #side-nav {
+    flex: 0 0 60px;
+
+    ol {
+      padding-top: 72px;
+      padding-left: 14px;
+    }
+  }
+
+  #listing-preview-lrg {
+    display: none;
+  }
+}
+
+// Desktop only
+@media all and (min-width: 1200px) {
+  #side-nav {
+    flex: 0 0 260px;
+  }
+
+  #side-nav ol {
+    padding-left: 24px;
+  }
+
+  #listing-preview-sm {
+    display: none;
+  }
+}
