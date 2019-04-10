@@ -1,0 +1,20 @@
+<%= javascript_pack_tag 'stimulus' %>
+
+<section class="the-pad">
+  <h1 class="center">Total Stimulus</h1>
+
+  <p>Here's an example of creating a pack that has Stimulus bundled with it using a local package.json in the module's directory.</p>
+
+  <p>All we have to do to make this work is add the appropriate Stimulus data attributes</p>
+
+  <div data-controller="hello">
+    <button class="waves-effect waves-light btn" data-action="click->hello#greet">Click me!</button>
+  </div>
+</section>
+<div class="container">
+  <div class="row">
+    <div class="col s12 center-align">
+      <%= link_to 'Back', root_url %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,10 @@
+{
+  "name": "stimulus",
+  "version": "1.0.0",
+  "description": "Demonstrate an independent Stimulus app.",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "stimulus": "^1.0.1"
+  }
+}

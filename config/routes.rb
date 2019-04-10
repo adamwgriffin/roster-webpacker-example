@@ -3,4 +3,5 @@ Rails.application.routes.draw do
   resources :ads, only: [:index]
   resources :separate_vue, only: [:index]
   resources :vue_example, only: [:index]
+  resources :stimulus, only: [:index]
 end
