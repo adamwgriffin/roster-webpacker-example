@@ -12,7 +12,7 @@ bundle exec rake webpacker:install:vue */
 export default {
   data: function () {
     return {
-      message: "This message attribute is used inside of a Vue component. Hot module replacment does not reload the page when changing it."
+      message: "This message attribute is used inside of a Vue component. Hot module replacement does not reload the page when changing it."
     }
   },
   computed: {

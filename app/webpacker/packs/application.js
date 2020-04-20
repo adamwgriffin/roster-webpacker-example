@@ -15,7 +15,4 @@
 // const images = require.context('../images', true)
 // const imagePath = (name) => images(name, true)
 
-// according to the docs @babel/polyfill should be imported into your main entry point 
-import '@babel/polyfill'
-
 console.log('Hello World from Webpacker')

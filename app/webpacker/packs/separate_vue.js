@@ -32,8 +32,6 @@
 //   <app></app>
 // </div>
 
-// according to the docs @babel/polyfill should be imported into your main entry point 
-import '@babel/polyfill'
 import Vue from 'vue/dist/vue.esm'
 import App from '../separate_vue/src/App.vue'
 

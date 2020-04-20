@@ -35,8 +35,6 @@
 /* this is the default example that's added when you install Vue using
 bundle exec rake webpacker:install:vue */
 
-// according to the docs @babel/polyfill should be imported into your main entry point 
-import '@babel/polyfill'
 import Vue from 'vue/dist/vue.esm'
 import App from '../app.vue'
 
