@@ -35,13 +35,8 @@
 /* this is the default example that's added when you install Vue using
 bundle exec rake webpacker:install:vue */
 
-import '../listing_management/theme.scss'
 import Vue from 'vue/dist/vue.esm'
 import App from '../listing_management/components/app.vue'
-import mcwButton from '@mcwv/button/index.js'
-import mcwFAB from '@mcwv/fab/index.js'
-Vue.use(mcwButton)
-Vue.use(mcwFAB)
 
 document.addEventListener('DOMContentLoaded', () => {
   // git rid of annoying warning about running vue in dev mode
