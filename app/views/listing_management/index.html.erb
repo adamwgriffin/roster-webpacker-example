@@ -1,3 +1,5 @@
+<link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
 <%= javascript_pack_tag 'listing_management' %>
 <%= stylesheet_pack_tag 'listing_management' %>
 
@@ -5,17 +7,7 @@
   <div class="container">
     <div class="row">
       <div class="col s12">
-        <h1>Vue Example</h1>
-        <p>
-        Running <code>bundle exec rake webpacker:install:vue</code> adds Vue to the main package.json on the root
-        of the project. This would be useful if we wanted to use Vue as the main framework for our front end stuff.
-        It also installed the hello_vue.js example into app/webpacker/packs, as well as an app.vue component
-        inside of app/wepacker. The hello_vue.js "pack" is the entry point for the webpack app. It imports app.vue to use as
-        the main component for the Vue app when it's initialized.
-        </p>
-
         <div id='listing-management'>
-          This is rendered inside the ERB template. Changing it causes the page to reload when using hot reloading: {{message}}
           <app></app>
         </div>
       </div>

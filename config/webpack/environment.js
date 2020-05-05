@@ -14,6 +14,7 @@ const sassLoaderConfig = sassLoader.use.find(function(element) {
 // Use Dart-implementation of Sass (default is node-sass)
 const options = sassLoaderConfig.options
 options.implementation = require('sass')
+options.fiber = require('fibers')
 options.includePaths = ['./node_modules']
 
 module.exports = environment

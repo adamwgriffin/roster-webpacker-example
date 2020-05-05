@@ -1,19 +1,12 @@
 <template>
-  <div id="mwc-button">
-    <mwc-button
-      class="primary-button"
-      label="A Material Web Component"
-      outlined
-      @click="alertMe"
-    ></mwc-button>
-  </div>
+  <v-btn id="mwc-button" @click="alertMe">Click me</v-btn>
 </template>
 
 <script>
-import "@material/theme"
-import "@material/mwc-button"
+import { VBtn } from 'vuetify/lib'
 
 export default {
+  components: { VBtn },
   methods: {
     alertMe: () => {
       alert('Clicked mwc-button!')
@@ -23,17 +16,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @use '@material/button/mdc-button';
-// @use '@material/button';
-
-// .foo-button {
-//   @include button.container-fill-color(rgb(238, 218, 212));
-// }
-
- /* mwc-button {
-   --mdc-theme-primary: green;
-   --mdc-theme-on-primary: white;
-   --mdc-theme-outline-color: red;
-   --mdc-button-outline-width: .23rem;
- } */
+// an id adds enough specificity to override the defaults
+#mwc-button.v-btn {
+  height: 70px;
+  background-color: purple;
+  padding: 0 70px;
+  color: white;
+  font-size: 24px;
+}
 </style>

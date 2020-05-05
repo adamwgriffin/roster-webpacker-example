@@ -36,6 +36,7 @@
 bundle exec rake webpacker:install:vue */
 
 import Vue from 'vue/dist/vue.esm'
+import vuetify from '../plugins/vuetify.js'
 import App from '../listing_management/components/app.vue'
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -44,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const app = new Vue({
     el: '#listing-management',
+    vuetify,
     data: {
       message: "This string is set in the message attribute of the Vue data for this component."
     },
