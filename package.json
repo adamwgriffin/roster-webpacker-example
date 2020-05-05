@@ -2,9 +2,12 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "^4.0.2",
+    "add": "^2.0.6",
+    "material-components-vue": "^1.2.0",
     "vue": "^2.6.10",
     "vue-loader": "^15.7.0",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.10",
+    "yarn": "^1.22.4"
   },
   "devDependencies": {
     "fibers": "^5.0.0",

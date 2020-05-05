@@ -27,6 +27,9 @@ export default {
 </script>
 
 <style scoped>
+@import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500");
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
 p {
   font-size: 2em;
   text-align: center;

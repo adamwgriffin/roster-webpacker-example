@@ -36,6 +36,8 @@
 bundle exec rake webpacker:install:vue */
 
 import Vue from 'vue/dist/vue.esm'
+import Button from 'material-components-vue/dist/button'
+Vue.use(Button)
 import App from '../listing_management/components/app.vue'
 
 document.addEventListener('DOMContentLoaded', () => {

@@ -1,17 +1,18 @@
 <template>
   <div id="mwc-button">
-    <mwc-button
+    <m-button
       class="primary-button"
       label="A Material Web Component"
-      outlined
+      raised
       @click="alertMe"
-    ></mwc-button>
+    >Hello</m-button>
   </div>
 </template>
 
 <script>
-import "@material/theme"
-import "@material/mwc-button"
+import Vue from 'vue/dist/vue.esm'
+import Button from 'material-components-vue/dist/button'
+Vue.use(Button)
 
 export default {
   methods: {
@@ -23,17 +24,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @use '@material/button/mdc-button';
-// @use '@material/button';
+$mdc-theme-primary: green;
+$mdc-theme-secondary: #ff1744;
+$mdc-theme-background: #f5f5f5;
+@import "material-components-vue/dist/button/styles";
 
-// .foo-button {
-//   @include button.container-fill-color(rgb(238, 218, 212));
-// }
-
- /* mwc-button {
-   --mdc-theme-primary: green;
-   --mdc-theme-on-primary: white;
-   --mdc-theme-outline-color: red;
-   --mdc-button-outline-width: .23rem;
- } */
+#mwc-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 </style>

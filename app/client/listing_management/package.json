@@ -1,5 +1,7 @@
 {
   "name": "listing_management",
   "private": true,
-  "dependencies": {}
+  "dependencies": {
+    "material-components-vue": "^1.2.0"
+  }
 }
