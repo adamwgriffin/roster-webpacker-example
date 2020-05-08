@@ -13,7 +13,11 @@ const sassLoaderConfig = sassLoader.use.find(function(element) {
 
 // Use Dart-implementation of Sass (default is node-sass)
 const options = sassLoaderConfig.options
-options.implementation = require('sass')
+/* https://github.com/webpack-contrib/sass-loader/issues/804#issuecomment-586095020
+webpackImporter: false fixes an issue between dart-sass and sass-loader */
+options.webpackImporter = false
 options.includePaths = ['./node_modules']
+options.implementation = require('sass')
+options.fiber = require('fibers')
 
 module.exports = environment
