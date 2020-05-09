@@ -1,21 +1,26 @@
 <template>
-  <div id="mwc-button">
-    <mwc-button
-      class="primary-button"
-      label="A Material Web Component"
-      outlined
-      @click="alertMe"
-    ></mwc-button>
-  </div>
+  <button class="moxi-primary-button  mdc-button mdc-button--touch mdc-button--raised" @click="alertMe">
+    <div class="mdc-button__ripple"></div>
+    <span class="mdc-button__label">Moxi Primary Button</span>
+    <div class="mdc-button__touch"></div>
+  </button>
 </template>
 
 <script>
-import "@material/theme"
-import "@material/mwc-button"
+import { MDCRipple } from '@material/ripple'
 
 export default {
+  data() {
+    return {
+      ripple: null
+    }
+  },
+  mounted() {
+    this.ripple = new MDCRipple(this.$el)
+  },
   methods: {
     alertMe: () => {
+      return
       alert('Clicked mwc-button!')
     }
   }
@@ -23,17 +28,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @use '@material/button/mdc-button';
-// @use '@material/button';
+// @import "@material/button/mdc-button";
+@use "@material/button";
 
-// .foo-button {
-//   @include button.container-fill-color(rgb(238, 218, 212));
-// }
+@include button.core-styles;
 
- /* mwc-button {
-   --mdc-theme-primary: green;
-   --mdc-theme-on-primary: white;
-   --mdc-theme-outline-color: red;
-   --mdc-button-outline-width: .23rem;
- } */
+.moxi-primary-button {
+  @include button.filled-accessible(#1661B1);
+  @include button.height(38px);
+  letter-spacing: 0.08em;
+  font-size: 14px;
+  font-weight: 400;
+}
+
 </style>
