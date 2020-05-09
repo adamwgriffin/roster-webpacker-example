@@ -1,34 +1,20 @@
 <template>
   <div id="app">
-    <p>{{ message }}</p>
-    <p>Does es7 work? {{ testArray }}</p>
-    <moxi-primary-button></moxi-primary-button>
+    <h1>Web Components Example</h1>
+    <HelloWorld msg="Welcome to Your Vue.js App"/>
   </div>
 </template>
 
 <script>
-import MoxiPrimaryButton from "./moxi-primary-button";
+import HelloWorld from './HelloWorld';
 
 export default {
-  components: { MoxiPrimaryButton },
-  data: function () {
-    return {
-      message: "This message attribute is used inside of a Vue component.\
-        Hot module replacement does not reload the page when changing it."
-    }
-  },
-  computed: {
-    testArray() {
-      const arr = [1, 2, 3, 4, NaN]
-      return arr.includes(1)
-    }
-  }
+  components: { HelloWorld }
 }
 </script>
 
 <style scoped>
-p {
-  font-size: 2em;
+#app {
   text-align: center;
 }
 </style>

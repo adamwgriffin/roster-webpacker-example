@@ -2,6 +2,9 @@
   "private": true,
   "dependencies": {
     "@rails/webpacker": "^4.0.2",
+    "@vaadin/vaadin-button": "^2.3.0",
+    "@vaadin/vaadin-grid": "^5.6.1",
+    "@vaadin/vaadin-text-field": "^2.6.0",
     "vue": "^2.6.10",
     "vue-loader": "^15.7.0",
     "vue-template-compiler": "^2.6.10"
