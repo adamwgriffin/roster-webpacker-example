@@ -1,7 +1,6 @@
 <template>
   <div id="app">
-    <p>{{ message }}</p>
-    <p>Does es7 work? {{ testArray }}</p>
+    <h1>Vue With Material Design Web Components</h1>
     <moxi-primary-button></moxi-primary-button>
   </div>
 </template>
@@ -10,19 +9,7 @@
 import MoxiPrimaryButton from "./moxi-primary-button";
 
 export default {
-  components: { MoxiPrimaryButton },
-  data: function () {
-    return {
-      message: "This message attribute is used inside of a Vue component.\
-        Hot module replacement does not reload the page when changing it."
-    }
-  },
-  computed: {
-    testArray() {
-      const arr = [1, 2, 3, 4, NaN]
-      return arr.includes(1)
-    }
-  }
+  components: { MoxiPrimaryButton }
 }
 </script>
 
