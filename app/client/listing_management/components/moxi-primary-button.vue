@@ -1,16 +1,15 @@
 <template>
-  <div id="mwc-button">
+  <div class="button-container">
     <mwc-button
       class="primary-button"
       label="A Material Web Component"
-      outlined
+      raised
       @click="alertMe"
     ></mwc-button>
   </div>
 </template>
 
 <script>
-import "@material/theme"
 import "@material/mwc-button"
 
 export default {
@@ -23,17 +22,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// @use '@material/button/mdc-button';
-// @use '@material/button';
+.button-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-// .foo-button {
-//   @include button.container-fill-color(rgb(238, 218, 212));
-// }
-
- /* mwc-button {
+ mwc-button {
    --mdc-theme-primary: green;
    --mdc-theme-on-primary: white;
    --mdc-theme-outline-color: red;
    --mdc-button-outline-width: .23rem;
- } */
+ }
 </style>
